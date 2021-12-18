@@ -11,6 +11,13 @@ class PokemonList {
     required this.results,
   });
 
+  static PokemonList initValue() {
+    return PokemonList(
+      count: 0,
+      results: [],
+    );
+  }
+
   static PokemonList fromJson(Map<String, dynamic> json) {
     return PokemonList(
       count: json['count'],
