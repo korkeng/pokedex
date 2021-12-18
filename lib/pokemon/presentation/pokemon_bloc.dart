@@ -8,13 +8,13 @@ class PokemonBloc {
 
   PokemonBloc({initialPokemonList}) {
     _subjectPokemon = BehaviorSubject<PokemonList>.seeded(initialPokemonList);
-    fetchPokemonList();
+    fetchPokemonList(null);
   }
 
   Stream<PokemonList> get pokemonStream => _subjectPokemon.stream;
 
-  void fetchPokemonList() async {
-    initialPokemonList = await ApiProvider().fetchPokemonList();
+  Future<void> fetchPokemonList(String? nextUrl) async {
+    initialPokemonList = await ApiProvider().fetchPokemonList(nextUrl);
     _subjectPokemon.sink.add(initialPokemonList);
   }
 

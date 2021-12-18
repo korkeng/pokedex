@@ -1,6 +1,7 @@
 import 'package:app/common/constants/text_constants.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
 import 'package:app/pokemon/presentation/pokemon_bloc.dart';
+import 'package:app/pokemon/presentation/widgets/pokemon_button_list.dart';
 import 'package:flutter/material.dart';
 
 class PokemonScreen extends StatefulWidget {
@@ -28,26 +29,9 @@ class _PokemonScreenState extends State<PokemonScreen> {
             PokemonList? _pokemonList = snapshot.data;
             if (_pokemonList != null) {
               return SafeArea(
-                child: ListView.builder(
-                  itemCount: _pokemonList.results.length,
-                  itemBuilder: (context, index) {
-                    return ElevatedButton(
-                      child: Text(_pokemonList.results[index].name),
-                      style: ElevatedButton.styleFrom(
-                        alignment: Alignment.centerLeft,
-                        primary: Colors.white,
-                        onPrimary: Colors.black54,
-                        elevation: 0,
-                        textStyle: const TextStyle(fontSize: 24),
-                        padding: const EdgeInsets.only(
-                          left: 8,
-                          top: 16,
-                          bottom: 16,
-                        ),
-                      ),
-                      onPressed: () {},
-                    );
-                  },
+                child: PokemonButtonList(
+                  data: _pokemonList,
+                  onPress: () {},
                 ),
               );
             }

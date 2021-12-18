@@ -5,8 +5,8 @@ import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
 import 'package:dio/dio.dart';
 
 class ApiProvider {
-  Future<PokemonList> fetchPokemonList() async {
-    final response = await Dio().get(ApiConstants.getPokemonListURL);
+  Future<PokemonList> fetchPokemonList(String? nextUrl) async {
+    final response = await Dio().get(nextUrl ?? ApiConstants.getPokemonListURL);
 
     switch (response.statusCode) {
       case HttpStatus.ok:
