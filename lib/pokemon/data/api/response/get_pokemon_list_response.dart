@@ -13,7 +13,7 @@ class PokemonList {
     required this.results,
   });
 
-  static PokemonList initValue() {
+  static PokemonList init() {
     return PokemonList(count: 0, results: []);
   }
 

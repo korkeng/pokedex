@@ -8,8 +8,8 @@ import 'package:rxdart/rxdart.dart';
 class PokemonBloc {
   final ApiProvider _apiProvider = ApiProvider();
 
-  PokemonList initialPokemonList = PokemonList.initValue();
-  PokemonDetail initialPokemonDetail = PokemonDetail.initValue();
+  PokemonList initialPokemonList = PokemonList.init();
+  PokemonDetail initialPokemonDetail = PokemonDetail.init();
 
   ScrollController scrollController = ScrollController();
   late BehaviorSubject<PokemonList> _subjectPokemonList;
@@ -46,7 +46,7 @@ class PokemonBloc {
 
   Future<void> fetchPokemonList(String? nextUrl) async {
     late List<NamedAPIResource> _oldPokemonNameAPIResource;
-    if (initialPokemonList != PokemonList.initValue()) {
+    if (initialPokemonList != PokemonList.init()) {
       _oldPokemonNameAPIResource = initialPokemonList.results;
     }
     initialPokemonList = await _apiProvider.fetchPokemonList(nextUrl);
@@ -60,7 +60,7 @@ class PokemonBloc {
   }
 
   Future<void> pullToRefresh() async {
-    initialPokemonList = PokemonList.initValue();
+    initialPokemonList = PokemonList.init();
     fetchPokemonList(null);
   }
 

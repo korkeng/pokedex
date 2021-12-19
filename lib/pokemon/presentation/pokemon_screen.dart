@@ -14,8 +14,8 @@ class PokemonScreen extends StatefulWidget {
 
 class _PokemonScreenState extends State<PokemonScreen> {
   final PokemonBloc _pokemonBloc = PokemonBloc(
-    initialPokemonList: PokemonList.initValue(),
-    initialPokemonDetail: PokemonDetail.initValue(),
+    initialPokemonList: PokemonList.init(),
+    initialPokemonDetail: PokemonDetail.init(),
   );
 
   @override
@@ -49,7 +49,11 @@ class _PokemonScreenState extends State<PokemonScreen> {
                 );
               }
             }
-            return const SizedBox();
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.amber,
+            );
           },
         ),
       ),

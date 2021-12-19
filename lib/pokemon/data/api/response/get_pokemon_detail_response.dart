@@ -259,7 +259,7 @@ class PokemonDetail {
     required this.types,
   });
 
-  static PokemonDetail initValue() {
+  static PokemonDetail init() {
     return PokemonDetail(
         abilities: [],
         baseExperience: 0,
