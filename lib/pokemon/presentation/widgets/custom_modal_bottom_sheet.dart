@@ -4,7 +4,7 @@ import 'package:app/pokemon/presentation/pokemon_bloc.dart';
 import 'package:app/pokemon/presentation/widgets/pokemon_detail_card.dart';
 import 'package:flutter/material.dart';
 
-class CustomModalButtomSheet {
+class CustomModalBottomSheet {
   static void show(BuildContext context, PokemonBloc bloc, String url) {
     ApiProvider _apiProvider = ApiProvider();
     bloc.displayPokemonDetail(url);

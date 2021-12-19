@@ -1,7 +1,7 @@
 import 'package:app/common/utils/text_formatter.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
 import 'package:app/pokemon/presentation/pokemon_bloc.dart';
-import 'package:app/pokemon/presentation/widgets/custom_modal_buttom_sheet.dart';
+import 'package:app/pokemon/presentation/widgets/custom_modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class PokemonButtonList extends StatelessWidget {
@@ -30,7 +30,7 @@ class PokemonButtonList extends StatelessWidget {
         padding: const EdgeInsets.only(left: 8, top: 16, bottom: 16),
         elevation: 0,
       ),
-      onPressed: () => CustomModalButtomSheet.show(
+      onPressed: () => CustomModalBottomSheet.show(
         context,
         bloc,
         data.results[index].url,
