@@ -31,7 +31,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
         child: StreamBuilder(
           stream: _pokemonBloc.pokemonListStream,
           builder: (context, AsyncSnapshot<PokemonList> snapshot) {
-            if (_pokemonBloc.getIsLoading() == false) {
+            if (!_pokemonBloc.getIsLoading()) {
               PokemonList? _pokemonList = snapshot.data;
               if (_pokemonList != null) {
                 return SafeArea(
