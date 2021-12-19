@@ -7,7 +7,8 @@ import 'package:dio/dio.dart';
 
 class ApiProvider {
   Future<PokemonList> fetchPokemonList(String? nextUrl) async {
-    final response = await Dio().get(nextUrl ?? ApiConstants.getPokemonListURL);
+    final response =
+        await Dio().get(nextUrl ?? ApiConstants.getPokemonListDefaultURL);
 
     switch (response.statusCode) {
       case HttpStatus.ok:
