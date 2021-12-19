@@ -1,6 +1,7 @@
 import 'package:app/pokemon/data/api/api_provider.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_detail_response.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
+import 'package:app/pokemon/data/api/response/model/named_api_resource.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -44,7 +45,16 @@ class PokemonBloc {
   Stream<PokemonDetail> get pokemonDetailStream => _subjectPokemonDetail.stream;
 
   Future<void> fetchPokemonList(String? nextUrl) async {
+    late List<NamedAPIResource> _oldPokemonNameAPIResource;
+    if (initialPokemonList != PokemonList.initValue()) {
+      _oldPokemonNameAPIResource = initialPokemonList.results;
+    }
     initialPokemonList = await _apiProvider.fetchPokemonList(nextUrl);
+    List<NamedAPIResource> newPokemonNameAPIResource =
+        List.from(_oldPokemonNameAPIResource)
+          ..addAll(initialPokemonList.results);
+
+    initialPokemonList.results = newPokemonNameAPIResource;
     setNextUrl(initialPokemonList.next);
     _subjectPokemonList.sink.add(initialPokemonList);
   }
