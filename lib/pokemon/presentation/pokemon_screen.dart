@@ -49,6 +49,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
                 );
               }
             }
+            // TODO: Adde loading PS.This is mockup screen for debugging
             return Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
