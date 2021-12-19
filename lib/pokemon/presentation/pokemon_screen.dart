@@ -24,22 +24,34 @@ class _PokemonScreenState extends State<PokemonScreen> {
       appBar: AppBar(
         title: Text(TextConstant.titlePage),
       ),
-      body: StreamBuilder(
-        stream: _pokemonBloc.pokemonListStream,
-        builder: (context, AsyncSnapshot<PokemonList> snapshot) {
-          if (snapshot.hasData) {
-            PokemonList? _pokemonList = snapshot.data;
-            if (_pokemonList != null) {
-              return SafeArea(
-                child: PokemonButtonList(
-                  data: _pokemonList,
-                  bloc: _pokemonBloc,
-                ),
-              );
-            }
-          }
-          return const SizedBox();
+      body: RefreshIndicator(
+        onRefresh: () async {
+          _pokemonBloc.pullToRefresh();
         },
+        child: StreamBuilder(
+          stream: _pokemonBloc.pokemonListStream,
+          builder: (context, AsyncSnapshot<PokemonList> snapshot) {
+            if (snapshot.hasData) {
+              PokemonList? _pokemonList = snapshot.data;
+              if (_pokemonList != null) {
+                return SafeArea(
+                  child: ListView.builder(
+                    controller: _pokemonBloc.scrollController,
+                    itemCount: _pokemonList.results.length,
+                    itemBuilder: (_, index) {
+                      return PokemonButtonList(
+                        data: _pokemonList,
+                        bloc: _pokemonBloc,
+                        index: index,
+                      );
+                    },
+                  ),
+                );
+              }
+            }
+            return const SizedBox();
+          },
+        ),
       ),
     );
   }

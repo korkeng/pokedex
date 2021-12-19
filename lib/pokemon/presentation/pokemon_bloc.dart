@@ -1,6 +1,7 @@
 import 'package:app/pokemon/data/api/api_provider.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_detail_response.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
+import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
 class PokemonBloc {
@@ -9,15 +10,34 @@ class PokemonBloc {
   PokemonList initialPokemonList = PokemonList.initValue();
   PokemonDetail initialPokemonDetail = PokemonDetail.initValue();
 
+  ScrollController scrollController = ScrollController();
   late BehaviorSubject<PokemonList> _subjectPokemonList;
   late BehaviorSubject<PokemonDetail> _subjectPokemonDetail;
 
-  PokemonBloc({initialPokemonList, initialPokemonDetail}) {
+  String? _nextUrl = '';
+
+  PokemonBloc({initialPokemonList, initialPokemonDetail, controller}) {
     _subjectPokemonList =
         BehaviorSubject<PokemonList>.seeded(initialPokemonList);
     _subjectPokemonDetail =
         BehaviorSubject<PokemonDetail>.seeded(initialPokemonDetail);
+    scrollController = scrollController;
+
+    _setScrollListiner();
     fetchPokemonList(null);
+  }
+
+  void setNextUrl(String? nextUrl) {
+    _nextUrl = nextUrl;
+  }
+
+  void _setScrollListiner() {
+    scrollController.addListener(() {
+      double _maxScroll = scrollController.position.maxScrollExtent;
+      if (scrollController.position.pixels == _maxScroll) {
+        fetchPokemonList(_nextUrl);
+      }
+    });
   }
 
   Stream<PokemonList> get pokemonListStream => _subjectPokemonList.stream;
@@ -25,7 +45,17 @@ class PokemonBloc {
 
   Future<void> fetchPokemonList(String? nextUrl) async {
     initialPokemonList = await _apiProvider.fetchPokemonList(nextUrl);
+    setNextUrl(initialPokemonList.next);
     _subjectPokemonList.sink.add(initialPokemonList);
+  }
+
+  Future<void> pullToRefresh() async {
+    initialPokemonList = PokemonList.initValue();
+    fetchPokemonList(null);
+  }
+
+  Future<void> reachEndScreen() async {
+    initialPokemonList;
   }
 
   Future<void> displayPokemonDetail(String url) async {
