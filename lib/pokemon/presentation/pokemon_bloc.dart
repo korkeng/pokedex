@@ -23,7 +23,7 @@ class PokemonBloc {
         BehaviorSubject<PokemonDetail>.seeded(initialPokemonDetail);
     scrollController = scrollController;
 
-    _setScrollListiner();
+    reachToEndScreen();
     fetchPokemonList(null);
   }
 
@@ -31,7 +31,7 @@ class PokemonBloc {
     _nextUrl = nextUrl;
   }
 
-  void _setScrollListiner() {
+  void reachToEndScreen() {
     scrollController.addListener(() {
       double _maxScroll = scrollController.position.maxScrollExtent;
       if (scrollController.position.pixels == _maxScroll) {
@@ -52,10 +52,6 @@ class PokemonBloc {
   Future<void> pullToRefresh() async {
     initialPokemonList = PokemonList.initValue();
     fetchPokemonList(null);
-  }
-
-  Future<void> reachEndScreen() async {
-    initialPokemonList;
   }
 
   Future<void> displayPokemonDetail(String url) async {
