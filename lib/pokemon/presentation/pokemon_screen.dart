@@ -38,7 +38,7 @@ class _PokemonScreenState extends State<PokemonScreen> {
                   child: ListView.builder(
                     controller: _pokemonBloc.scrollController,
                     itemCount: _pokemonList.results.length,
-                    itemBuilder: (_, index) {
+                    itemBuilder: (context, index) {
                       return PokemonButtonList(
                         data: _pokemonList,
                         bloc: _pokemonBloc,
@@ -49,11 +49,8 @@ class _PokemonScreenState extends State<PokemonScreen> {
                 );
               }
             }
-            // TODO: Adde loading PS.This is mockup screen for debugging
-            return Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              color: Colors.amber,
+            return const Center(
+              child: CircularProgressIndicator(),
             );
           },
         ),
