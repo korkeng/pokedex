@@ -1,7 +1,7 @@
 import 'package:app/common/utils/text_formatter.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
 import 'package:app/pokemon/presentation/pokemon_bloc.dart';
-import 'package:app/pokemon/presentation/widgets/custom_modal_bottom_sheet.dart';
+import 'package:app/pokemon/presentation/components/custom_modal_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class PokemonButtonList extends StatelessWidget {
