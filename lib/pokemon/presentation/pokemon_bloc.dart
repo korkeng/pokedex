@@ -17,7 +17,7 @@ class PokemonBloc {
   late BehaviorSubject<PokemonDetail> _subjectPokemonDetail;
 
   String? _nextUrl = TextConstant.emptyString;
-  bool? _isLoading = false;
+  bool _isLoading = false;
 
   PokemonBloc({initialPokemonList, initialPokemonDetail, controller}) {
     _subjectPokemonList =
@@ -39,7 +39,7 @@ class PokemonBloc {
   }
 
   bool getIsLoading() {
-    return _isLoading ?? false;
+    return _isLoading;
   }
 
   void reachToEndScreen() {
