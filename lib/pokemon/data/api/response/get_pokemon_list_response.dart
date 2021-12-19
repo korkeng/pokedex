@@ -1,8 +1,10 @@
+import 'package:app/pokemon/data/api/response/model/named_api_resource.dart';
+
 class PokemonList {
   int count;
   String? next;
   String? previous;
-  List<Result> results;
+  List<NamedAPIResource> results;
 
   PokemonList({
     required this.count,
@@ -12,10 +14,7 @@ class PokemonList {
   });
 
   static PokemonList initValue() {
-    return PokemonList(
-      count: 0,
-      results: [],
-    );
+    return PokemonList(count: 0, results: []);
   }
 
   static PokemonList fromJson(Map<String, dynamic> json) {
@@ -24,25 +23,8 @@ class PokemonList {
       next: json['next'],
       previous: json['previous'],
       results: (json['results'] as List<dynamic>)
-          .map((_) => Result.fromJson(_ as Map<String, dynamic>))
+          .map((_) => NamedAPIResource.fromJson(_ as Map<String, dynamic>))
           .toList(),
-    );
-  }
-}
-
-class Result {
-  String name;
-  String url;
-
-  Result({
-    required this.name,
-    required this.url,
-  });
-
-  static Result fromJson(Map<String, dynamic> json) {
-    return Result(
-      name: json['name'],
-      url: json['url'],
     );
   }
 }
