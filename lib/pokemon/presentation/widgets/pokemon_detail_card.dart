@@ -44,7 +44,10 @@ class PokemonDetailCard extends StatelessWidget {
         children: [
           TextSpan(
             text: prefixWord,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           TextSpan(
             text: TextConstant.spacer + value.toString(),
@@ -59,9 +62,15 @@ class PokemonDetailCard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _richTextFormatter(prefixWord: TextConstant.weight, value: weight),
+        _richTextFormatter(
+          prefixWord: TextConstant.weight,
+          value: weight,
+        ),
         const SizedBox(width: 16),
-        _richTextFormatter(prefixWord: TextConstant.height, value: height),
+        _richTextFormatter(
+          prefixWord: TextConstant.height,
+          value: height,
+        ),
       ],
     );
   }
