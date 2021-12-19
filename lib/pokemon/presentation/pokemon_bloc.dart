@@ -79,7 +79,9 @@ class PokemonBloc {
   }
 
   Future<void> displayPokemonDetail(String url) async {
+    setIsLoading(true);
     initialPokemonDetail = await _apiProvider.fetchPokemonDetail(url);
+    setIsLoading(false);
     _subjectPokemonDetail.sink.add(initialPokemonDetail);
   }
 

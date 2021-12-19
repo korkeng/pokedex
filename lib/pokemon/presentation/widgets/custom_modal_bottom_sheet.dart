@@ -32,7 +32,11 @@ class CustomModalBottomSheet {
                 );
               }
             }
-            return const SizedBox();
+            return Container(
+              height: MediaQuery.of(context).size.height / 4,
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(),
+            );
           },
         );
       },
