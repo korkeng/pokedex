@@ -1,7 +1,7 @@
 import 'package:app/pokemon/data/api/api_provider.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_detail_response.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
-import 'package:app/pokemon/data/api/response/model/named_api_resource.dart';
+import 'package:app/pokemon/data/api/response/pokemon_model/named_api_resource.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 

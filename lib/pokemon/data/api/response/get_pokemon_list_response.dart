@@ -1,4 +1,4 @@
-import 'package:app/pokemon/data/api/response/model/named_api_resource.dart';
+import 'package:app/pokemon/data/api/response/pokemon_model/named_api_resource.dart';
 
 class PokemonList {
   int count;

@@ -1,0 +1,13 @@
+export 'package:app/pokemon/data/api/response/pokemon_model/ability.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/generation.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/generation_game_version.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/held_item.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/home.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/move.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/named_api_resource.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/other.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/sprite.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/sprite_file.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/stat.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/version_game_index.dart';
+export 'package:app/pokemon/data/api/response/pokemon_model/type.dart';

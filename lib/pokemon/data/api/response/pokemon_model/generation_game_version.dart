@@ -1,4 +1,4 @@
-import 'package:app/pokemon/data/api/response/model/generation.dart';
+import 'package:app/pokemon/data/api/response/pokemon_model/generation.dart';
 
 class GenerationGameVersions {
   GenerationI generationI;

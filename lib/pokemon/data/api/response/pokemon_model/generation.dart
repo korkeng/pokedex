@@ -1,4 +1,4 @@
-import 'package:app/pokemon/data/api/response/model/sprite.dart';
+import 'package:app/pokemon/data/api/response/pokemon_model/sprite.dart';
 
 class GenerationI {
   Sprite redGreenBlue;
