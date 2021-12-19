@@ -9,6 +9,12 @@ class CustomModalButtomSheet {
     ApiProvider _apiProvider = ApiProvider();
     bloc.displayPokemonDetail(url);
     showModalBottomSheet<void>(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
       context: context,
       builder: (BuildContext context) {
         return FutureBuilder<PokemonDetail>(
