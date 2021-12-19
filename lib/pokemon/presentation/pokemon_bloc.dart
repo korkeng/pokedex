@@ -17,6 +17,7 @@ class PokemonBloc {
   late BehaviorSubject<PokemonDetail> _subjectPokemonDetail;
 
   String? _nextUrl = TextConstant.emptyString;
+  bool? _isLoading = false;
 
   PokemonBloc({initialPokemonList, initialPokemonDetail, controller}) {
     _subjectPokemonList =
@@ -31,6 +32,14 @@ class PokemonBloc {
 
   void setNextUrl(String? nextUrl) {
     _nextUrl = nextUrl;
+  }
+
+  void setIsLoading(bool flag) {
+    _isLoading = flag;
+  }
+
+  bool getIsLoading() {
+    return _isLoading ?? false;
   }
 
   void reachToEndScreen() {
@@ -50,7 +59,11 @@ class PokemonBloc {
     if (initialPokemonList != PokemonList.init()) {
       _oldPokemonNameAPIResource = initialPokemonList.results;
     }
+
+    setIsLoading(true);
     initialPokemonList = await _apiProvider.fetchPokemonList(nextUrl);
+    setIsLoading(false);
+
     List<NamedAPIResource> newPokemonNameAPIResource =
         List.from(_oldPokemonNameAPIResource)
           ..addAll(initialPokemonList.results);
