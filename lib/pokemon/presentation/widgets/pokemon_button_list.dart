@@ -1,3 +1,4 @@
+import 'package:app/common/utils/text_formatter.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
 import 'package:app/pokemon/presentation/pokemon_bloc.dart';
 import 'package:app/pokemon/presentation/widgets/custom_modal_buttom_sheet.dart';
@@ -18,7 +19,9 @@ class PokemonButtonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      child: Text(data.results[index].name),
+      child: Text(
+        TextFormatter.capitalizeFirstChar(word: data.results[index].name),
+      ),
       style: ElevatedButton.styleFrom(
         alignment: Alignment.centerLeft,
         primary: Colors.white,

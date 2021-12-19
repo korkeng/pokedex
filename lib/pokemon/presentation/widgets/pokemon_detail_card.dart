@@ -1,4 +1,5 @@
 import 'package:app/common/constants/text_constants.dart';
+import 'package:app/common/utils/text_formatter.dart';
 import 'package:flutter/material.dart';
 
 class PokemonDetailCard extends StatelessWidget {
@@ -18,7 +19,10 @@ class PokemonDetailCard extends StatelessWidget {
   }) : super(key: key);
 
   Widget _renderPokemonName() {
-    return Text(name, style: const TextStyle(fontSize: 36));
+    return Text(
+      TextFormatter.capitalizeFirstChar(word: name),
+      style: const TextStyle(fontSize: 36),
+    );
   }
 
   Widget _imageFormatter({required String src}) {
