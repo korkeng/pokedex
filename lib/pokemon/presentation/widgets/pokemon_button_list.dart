@@ -1,14 +1,15 @@
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
+import 'package:app/pokemon/presentation/pokemon_bloc.dart';
 import 'package:flutter/material.dart';
 
 class PokemonButtonList extends StatelessWidget {
-  final void Function() onPress;
   final PokemonList data;
+  final PokemonBloc bloc;
 
   const PokemonButtonList({
     Key? key,
     required this.data,
-    required this.onPress,
+    required this.bloc,
   }) : super(key: key);
 
   @override
@@ -30,7 +31,8 @@ class PokemonButtonList extends StatelessWidget {
               bottom: 16,
             ),
           ),
-          onPressed: onPress,
+          onPressed: () {},
+          // onPressed: bloc.displayPokemonDetail(data.results[index].url),
         );
       },
     );
