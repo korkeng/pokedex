@@ -1,3 +1,4 @@
+import 'package:app/common/constants/text_constants.dart';
 import 'package:app/pokemon/data/api/api_provider.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_detail_response.dart';
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
@@ -15,7 +16,7 @@ class PokemonBloc {
   late BehaviorSubject<PokemonList> _subjectPokemonList;
   late BehaviorSubject<PokemonDetail> _subjectPokemonDetail;
 
-  String? _nextUrl = '';
+  String? _nextUrl = TextConstant.emptyString;
 
   PokemonBloc({initialPokemonList, initialPokemonDetail, controller}) {
     _subjectPokemonList =
