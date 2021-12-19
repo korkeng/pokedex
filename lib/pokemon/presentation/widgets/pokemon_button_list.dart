@@ -1,5 +1,6 @@
 import 'package:app/pokemon/data/api/response/get_pokemon_list_response.dart';
 import 'package:app/pokemon/presentation/pokemon_bloc.dart';
+import 'package:app/pokemon/presentation/widgets/custom_modal_buttom_sheet.dart';
 import 'package:flutter/material.dart';
 
 class PokemonButtonList extends StatelessWidget {
@@ -23,16 +24,15 @@ class PokemonButtonList extends StatelessWidget {
             alignment: Alignment.centerLeft,
             primary: Colors.white,
             onPrimary: Colors.black54,
-            elevation: 0,
             textStyle: const TextStyle(fontSize: 24),
-            padding: const EdgeInsets.only(
-              left: 8,
-              top: 16,
-              bottom: 16,
-            ),
+            padding: const EdgeInsets.only(left: 8, top: 16, bottom: 16),
+            elevation: 0,
           ),
-          onPressed: () {},
-          // onPressed: bloc.displayPokemonDetail(data.results[index].url),
+          onPressed: () => CustomModalButtomSheet.show(
+            context,
+            bloc,
+            data.results[index].url,
+          ),
         );
       },
     );
